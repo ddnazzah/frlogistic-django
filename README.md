@@ -1,2 +1,0 @@
-# fr-logistics
-fr-logistics

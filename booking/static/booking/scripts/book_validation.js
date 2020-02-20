@@ -8,6 +8,7 @@ const contact = document.getElementById('contact');
 const contact2 = document.getElementById('contact2');
 const from = document.getElementById('from');
 const to = document.getElementById('to');
+const returnDate2 = document.getElementById('returnDate2');
 const school = document.getElementById('school');
 const hall = document.getElementById('hall');
 const name3 = document.getElementById('name3');
@@ -179,29 +180,25 @@ function validateTo(){
 }
 
 function validateSchool(){
-    if (isEmpty(school)) {
-        return false;
-    }
-    else{
-        return true;
-    }
+    return !isEmpty(school);
 }
 
 function validateHall(){
-    if (isEmpty(hall)) {
-        return false;
-    }
-    else{
-        return true;
-    }
+    return !isEmpty(hall);
 }
+
+function validateDate2() {
+    return !isEmpty(returnDate2);
+}
+
+
 
 
 // UTILITIES
 
 // empty check function
 function isEmpty(field) {
-    if (field.value.trim() == "") {
+    if (field.value.trim() === "") {
         return (setInvalid(field, 'Please do not leave blank'));
     }
     else {
@@ -297,28 +294,13 @@ function matchWithRegEx(field, regEx, message) {
 
 
 function validateDelivery(){
-    if (validateName() && validateMail() && validateContact() && validateFrom() && validateTo()){
-        return true;
-    }
-    else {
-        return false;
-    }
+    return validateName() && validateMail() && validateContact() && validateFrom() && validateTo();
 }
 
 function validateSafekeeping(){
-    if (validateName2() && validateMail2() && validateContact2() && validateSchool() && validateHall()){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return !!(validateName2() && validateMail2() && validateContact2() && validateSchool() && validateHall() && validateDate2());
 }
 
 function validateWarehousing(){
-    if (validateName3() && validateBusiness() && validateMail3() && validateContact3() && validateFrom3()){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return validateName3() && validateBusiness() && validateMail3() && validateContact3() && validateFrom3();
 }
