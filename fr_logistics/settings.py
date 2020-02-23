@@ -116,7 +116,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-
+STATIC_URL = '/static/'
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -129,7 +130,3 @@ EMAIL_HOST_USER = 'frlogistics0@gmail.com'
 EMAIL_HOST_PASSWORD = '#eprijand'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-STATIC_URL = '/static/'
-
-STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
