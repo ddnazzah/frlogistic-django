@@ -1,7 +1,9 @@
+// Authored by Nii_Odenkey
 // variables for data
 const name = document.getElementById('name');
 const mail = document.getElementById('mail');
 const message = document.getElementById('message');
+let onfocus = 0;
 
 // Validation colors
 const green = '#14ceac';
@@ -18,8 +20,7 @@ function validateName() {
     // check if only has letters
     else if (notOnlyLetters(name)) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
@@ -28,18 +29,19 @@ function validateName() {
 function validateMail() {
     if (isEmpty(mail)) {
         return false;
-    }
-    else if (!containsCharacters(mail, 5)) {
+    } else if (!containsCharacters(mail, 5)) {
         return false;
+    } else {
+        return true;
     }
-    else { return true; }
 }
 
-function validateMessage(){
-    if (isEmpty(message)){
+function validateMessage() {
+    if (isEmpty(message)) {
         return false;
+    } else {
+        return true;
     }
-    else {return true;}
 }
 
 
@@ -49,47 +51,41 @@ function validateMessage(){
 function isEmpty(field) {
     if (field.value.trim() == "") {
         return (setInvalid(field, 'Please do not leave blank'));
-    }
-    else {
+    } else {
         return (setValid(field));
     }
 }
+
 function notOnlyLetters(field) {
     if (/^[a-zA-Z ]+$/.test(field.value)) {
         return (setValid(field));
-    }
-    else {
+    } else {
         return (setInvalid(field, "Please enter letters only"));
     }
 }
+
 function setValid(field) {
     field.className = "valid";
     field.style.border = "1px solid #14ceac";
-    field.nextElementSibling.innerHTML = "";
-    field.nextElementSibling.style.marginBottom = "0px";
-    field.style.marginBottom = "19px";
+    if(field && field.nextSibling) {
+        field.parentNode.removeChild(field.nextSibling);
+    }
+    onfocus = 0;
     return false;
-
 }
 
 function setInvalid(field, message) {
-    field.className = "invalid";
-    field.style.border = "1px solid #ce2b51";
-    field.style.marginBottom = "0px";
-    field.nextElementSibling.innerHTML = message;
-    field.nextElementSibling.style.color = red;
-    field.nextElementSibling.style.marginBottom = "6px";
-    return true;
+    if (onfocus === 0) {
+        field.className = "invalid";
+        field.style.border = "1px solid #ce2b51";
+        field.style.marginBottom = "0px";
+        field.insertAdjacentHTML("afterend", '<span style="color: red"><span>');
+        field.nextElementSibling.innerHTML = message;
+        onfocus = 1;
+        return true;
+    }
+}
 
-}
-function falseLength(field, num) {
-    if (field.value.length < num) {
-        return (setInvalid(field, `Must be at least ${num} characters`));
-    }
-    else {
-        return (setValid(field));
-    }
-}
 function containsCharacters(field, code) {
     let regEx;
     switch (code) {
@@ -123,6 +119,7 @@ function containsCharacters(field, code) {
             return false
     }
 }
+
 function matchWithRegEx(field, regEx, message) {
     if (field.value.toLowerCase().match(regEx)) {
         return (!setValid(field));
@@ -132,11 +129,10 @@ function matchWithRegEx(field, regEx, message) {
 }
 
 // validate on submit
-function validateContactPage(){
-    if (validateName() && validateMail() && validateMessage()){
+function validateContactPage() {
+    if (validateName() && validateMail() && validateMessage()) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }

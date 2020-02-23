@@ -1,3 +1,4 @@
+<!--Authored by Nii_Odenkey-->
 {% extends 'booking/base.html' %}
 
 {% load static %}
@@ -38,7 +39,7 @@
                     <h4>Who we are</h4>
                     <p>FR Logistics is a trucking and warehousing company that provides its clientele safe,
                         affordable and reliable delivery and warehousing services to their specifications.</p>
-                    <a href="{% url 'oops'%}">
+                    <a href="{% url 'about'%}">
                         <button class="btn btn-default" style="margin-bottom: 40px;">Learn
                             more
                         </button>
@@ -56,7 +57,7 @@
                     <p>FR logistics provides the services of safe keeping and transporting items of individuals,
                         students and small scale businesses in Greater Accra, Ashanti and Eastern regions to and from
                         the stated regions.</p>
-                    <a href="{%url 'about'%}">
+                    <a href="{% url 'about' %}">
                         <button class="btn btn-default" style="margin-bottom: 40px;">Learn
                             more
                         </button>
@@ -89,7 +90,6 @@
             </div>
         </div>
     </section>
-
     {% include 'booking/book_jumbotron.html' %}
 
 {% endblock %}

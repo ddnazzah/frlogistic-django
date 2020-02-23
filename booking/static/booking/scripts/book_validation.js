@@ -1,14 +1,13 @@
+// Authored by Nii_Odenkey
 // variables for data
 const name = document.getElementById('name');
 const name2 = document.getElementById('name2');
 const mail = document.getElementById('mail');
 const mail2 = document.getElementById('mail2');
-const message = document.getElementById('message');
 const contact = document.getElementById('contact');
 const contact2 = document.getElementById('contact2');
 const from = document.getElementById('from');
 const to = document.getElementById('to');
-const returnDate2 = document.getElementById('returnDate2');
 const school = document.getElementById('school');
 const hall = document.getElementById('hall');
 const name3 = document.getElementById('name3');
@@ -16,6 +15,10 @@ const business = document.getElementById('business');
 const mail3 = document.getElementById('mail3');
 const contact3 = document.getElementById('contact3');
 const from3 = document.getElementById('from3');
+const items = document.getElementById('items');
+const items2 = document.getElementById('items2');
+const items3 = document.getElementById('items3');
+let onfocus = 0;
 
 // Validation colors
 const green = '#14ceac';
@@ -32,8 +35,7 @@ function validateName() {
     // check if only has letters
     else if (notOnlyLetters(name)) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
@@ -46,8 +48,7 @@ function validateName2() {
     // check if only has letters
     else if (notOnlyLetters(name2)) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
@@ -60,197 +61,199 @@ function validateName3() {
     // check if only has letters
     else if (notOnlyLetters(name3)) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
 
-function validateBusiness(){
-        // check if empty
-        if (isEmpty(business)) {
-            return false;
-        }
-        else {
-            return true;
-        }
+function validateBusiness() {
+    // check if empty
+    if (isEmpty(business)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // validate email
 function validateMail() {
     if (isEmpty(mail)) {
         return false;
-    }
-    else if (!containsCharacters(mail, 5)) {
+    } else if (!containsCharacters(mail, 5)) {
         return false;
+    } else {
+        return true;
     }
-    else { return true; }
 }
 
 function validateMail2() {
     if (isEmpty(mail2)) {
         return false;
-    }
-    else if (!containsCharacters(mail2, 5)) {
+    } else if (!containsCharacters(mail2, 5)) {
         return false;
+    } else {
+        return true;
     }
-    else { return true; }
 }
 
 function validateMail3() {
     if (isEmpty(mail3)) {
         return false;
-    }
-    else if (!containsCharacters(mail3, 5)) {
+    } else if (!containsCharacters(mail3, 5)) {
         return false;
-    }
-    else { return true; }
-}
-
-function validateContact(){
-    if (isEmpty(contact)){
-        return false;
-    }
-    if (NotNumber(contact)){
-        return false;
-    }
-    if (falseLength(contact, 10)){
-        return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateContact2(){
-    if (isEmpty(contact2)){
+function validateContact() {
+    if (isEmpty(contact)) {
         return false;
     }
-    if (NotNumber(contact2)){
+    if (NotNumber(contact)) {
         return false;
     }
-    if (falseLength(contact2, 10)){
+    if (falseLength(contact, 10)) {
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateContact3(){
-    if (isEmpty(contact3)){
+function validateContact2() {
+    if (isEmpty(contact2)) {
         return false;
     }
-    if (NotNumber(contact3)){
+    if (NotNumber(contact2)) {
         return false;
     }
-    if (falseLength(contact3, 10)){
+    if (falseLength(contact2, 10)) {
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateFrom(){
+function validateContact3() {
+    if (isEmpty(contact3)) {
+        return false;
+    }
+    if (NotNumber(contact3)) {
+        return false;
+    }
+    if (falseLength(contact3, 10)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validateFrom() {
     if (isEmpty(from)) {
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateFrom3(){
+function validateFrom3() {
     if (isEmpty(from3)) {
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateTo(){
+function validateTo() {
     if (isEmpty(to)) {
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-function validateSchool(){
-    return !isEmpty(school);
+function validateSchool() {
+    if (isEmpty(school)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
-function validateHall(){
+function validateHall() {
     return !isEmpty(hall);
 }
 
-function validateDate2() {
-    return !isEmpty(returnDate2);
+function validateItems(){
+    return !isEmpty(items);
 }
 
+function validateItems2(){
+    return !isEmpty(items2);
+}
 
-
-
+function validateItems3(){
+    return !isEmpty(items3);
+}
 // UTILITIES
 
 // empty check function
 function isEmpty(field) {
-    if (field.value.trim() === "") {
+    if (field.value.trim() == "") {
         return (setInvalid(field, 'Please do not leave blank'));
-    }
-    else {
+    } else {
         return (setValid(field));
     }
 }
+
 function notOnlyLetters(field) {
     if (/^[a-zA-Z ]+$/.test(field.value)) {
         return (setValid(field));
-    }
-    else {
+    } else {
         return (setInvalid(field, "Please enter letters only"));
     }
 }
-function NotNumber(field){
-    if (isNaN(field.value)){
+
+function NotNumber(field) {
+    if (isNaN(field.value)) {
         setInvalid(field, 'Enter numbers only');
         return true;
-    }
-    else{
+    } else {
         setValid(field);
         return false;
     }
 }
+
 function setValid(field) {
     field.className = "valid";
     field.style.border = "1px solid #14ceac";
-    field.nextElementSibling.innerHTML = "";
-    field.nextElementSibling.style.marginBottom = "0px";
-    field.style.marginBottom = "-19px";
+    if (field && field.nextSibling) {
+        field.parentNode.removeChild(field.nextSibling);
+    }
+    onfocus = 0;
     return false;
-
 }
 
 function setInvalid(field, message) {
-    field.className = "invalid";
-    field.style.border = "1px solid #ce2b51";
-    field.style.marginBottom = "0px";
-    field.nextElementSibling.innerHTML = message;
-    field.nextElementSibling.style.color = red;
-    field.nextElementSibling.style.marginBottom = "6px";
-    return true;
-
+    if (onfocus === 0) {
+        field.className = "invalid";
+        field.style.border = "1px solid #ce2b51";
+        field.style.marginBottom = "0px";
+        field.insertAdjacentHTML("afterend", '<span style="color: red"><span>');
+        field.nextElementSibling.innerHTML = message;
+        onfocus = 1;
+        return true;
+    }
 }
+
 function falseLength(field, num) {
     if (field.value.length < num) {
         return (setInvalid(field, `Must be at least ${num} characters`));
-    }
-    else {
+    } else {
         return (setValid(field));
     }
 }
+
 function containsCharacters(field, code) {
     let regEx;
     switch (code) {
@@ -284,6 +287,7 @@ function containsCharacters(field, code) {
             return false
     }
 }
+
 function matchWithRegEx(field, regEx, message) {
     if (field.value.toLowerCase().match(regEx)) {
         return (!setValid(field));
@@ -293,14 +297,27 @@ function matchWithRegEx(field, regEx, message) {
 }
 
 
-function validateDelivery(){
-    return validateName() && validateMail() && validateContact() && validateFrom() && validateTo();
+function validateDelivery() {
+    if (validateName() && validateMail() && validateContact() && validateFrom() && validateTo() && validateItems()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function validateSafekeeping(){
-    return !!(validateName2() && validateMail2() && validateContact2() && validateSchool() && validateHall() && validateDate2());
+function validateSafekeeping() {
+    if (validateName2() && validateMail2() && validateContact2() && validateSchool() && validateHall() && validateItems2()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function validateWarehousing(){
-    return validateName3() && validateBusiness() && validateMail3() && validateContact3() && validateFrom3();
+function validateWarehousing() {
+    if (validateName3() && validateBusiness() && validateMail3() && validateContact3() && validateFrom3() && validateItems3()) {
+        return true;
+    } else {
+        onfocus = 0;
+        return false;
+    }
 }
