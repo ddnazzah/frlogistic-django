@@ -35,6 +35,11 @@
                           method="POST">
                         {% csrf_token %}
                         {{ delivery_form.as_p }}
+                        <div style="display: flex; width: 100%; color: rgba(0,0,0,0.40)">
+                            <input type="checkbox" id="checkbox1" name="checkbox1" required style="width: 10%">
+                            <label for="checkbox1">I have read and accept the <a href="{%url 'terms'%}" class="book_terms">terms and
+                                conditions</a></label>
+                        </div>
                         <input type="submit" id="submit" class="btn" style="margin-top: 20px;">
                     </form>
 
@@ -43,6 +48,11 @@
                           method="POST">
                         {% csrf_token %}
                         {{ safekeeping_form.as_p }}
+                        <div style="display: flex; width: 100%; color: rgba(0,0,0,0.40)">
+                            <input type="checkbox" id="checkbox2" name="checkbox2" required style="width: 10%">
+                            <label for="checkbox2">I have read and accept the <a href="{%url 'terms'%}" class="book_terms" >terms and
+                                conditions</a></label>
+                        </div>
                         <input type="submit" id="submit2" class="btn" style="margin-top: 20px;">
                     </form>
 
@@ -50,7 +60,11 @@
                     <form action="{% url 'book' %}" id="third" class="tab-pane" method="POST">
                         {% csrf_token %}
                         {{ warehousing_form.as_p }}
-                        <span></span><br>
+                        <div style="display: flex; width: 100%; color: rgba(0,0,0,0.40)">
+                            <input type="checkbox" id="checkbox3" name="checkbox3" required style="width: 10%">
+                            <label for="checkbox3">I have read and accept the <a href="{%url 'terms'%}" class="book_terms">terms and
+                                conditions</a></label>
+                        </div>
                         <input type="submit" id="submit3" class="btn" style="margin-top: 20px;">
                     </form>
 

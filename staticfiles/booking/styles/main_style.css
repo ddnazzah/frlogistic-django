@@ -499,6 +499,13 @@ input:-webkit-autofill {
     animation-fill-mode: both;
     -webkit-animation-fill-mode: both;
 }
+.book_terms{
+    color: black;
+}
+.book_terms:hover{
+    color: rgba(0, 0, 0, 0.50);
+    text-decoration: none;
+}
 
 @media only screen and (max-width: 600px) {
     .belief h2 {
