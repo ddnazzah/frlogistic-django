@@ -1,5 +1,6 @@
 # Authored by Alfred_Asare
 from django.db import models
+from django.utils import timezone
 
 class DeliveryModel(models.Model):
     name = models.CharField(max_length=150)
@@ -8,6 +9,7 @@ class DeliveryModel(models.Model):
     location_from = models.CharField(max_length=150)
     location_to = models.CharField(max_length=150)
     items_list = models.TextField()
+    currentdate = models.DateField(default=timezone.now)
 
     class Meta:
         verbose_name = 'Delivery data'
@@ -24,6 +26,9 @@ class SafeKeepingModel(models.Model):
     location_from = models.CharField(max_length=150)
     date = models.DateField()
     items_list = models.TextField()
+    currentdate = models.DateField(default=timezone.now)
+
+
 
     class Meta:
         verbose_name = 'Safekeeping data'
@@ -40,6 +45,8 @@ class WarehousingModel(models.Model):
     contact = models.CharField(max_length=30)
     location_from = models.CharField(max_length=150)
     items_list = models.TextField()
+    currentdate = models.DateField(default=timezone.now)
+
 
     class Meta:
         verbose_name = 'Warehousing data'

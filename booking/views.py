@@ -3,9 +3,12 @@ import csv
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+import datetime
 from .forms import *
 from .models import *
 
+now = datetime.datetime.today()
+date = now.date()
 
 def index(request):
     return render(request, 'booking/index.html', {'title': 'Home - FR Logistics'})
@@ -87,7 +90,7 @@ def export_delivery_data_csv(request):
     response['Content-Disposition'] = 'attachment; filename="delivery.csv"'
     writer = csv.writer(response)
     writer.writerow(['Name', 'Email', 'Contact', 'Location From', 'Location To', 'Items List'])
-    deliveries = DeliveryModel.objects.all().values_list('name', 'email', 'contact', 'location_from', 'location_to',
+    deliveries = DeliveryModel.objects.filter(currentdate=date).values_list('name', 'email', 'contact', 'location_from', 'location_to',
                                                          'items_list')
     for delivery in deliveries:
         writer.writerow(delivery)
@@ -99,7 +102,7 @@ def export_safekeeping_data_csv(request):
     response['Content-Disposition'] = 'attachment; filename="safekeeping.csv"'
     writer = csv.writer(response)
     writer.writerow(['Name', 'Email', 'Contact', 'Location From', 'Date', 'Items List'])
-    safekeeping_items = SafeKeepingModel.objects.all().values_list('name', 'email', 'contact', 'location_from', 'date',
+    safekeeping_items = SafeKeepingModel.objects.filter(currentdate=date).values_list('name', 'email', 'contact', 'location_from', 'date',
                                                                    'items_list')
     for safekeeping_item in safekeeping_items:
         writer.writerow(safekeeping_item)
@@ -111,7 +114,7 @@ def export_warehousing_data_csv(request):
     response['Content-Disposition'] = 'attachment; filename="warehouse.csv"'
     writer = csv.writer(response)
     writer.writerow(['Name', 'Name of Business', 'Email', 'Contact', 'Location From', 'Items List'])
-    warehouse_items = WarehousingModel.objects.all().values_list('name', 'name_of_business', 'email', 'contact',
+    warehouse_items = WarehousingModel.objects.filter(currentdate=date).values_list('name', 'name_of_business', 'email', 'contact',
                                                                  'location_from', 'items_list')
     for warehouse_item in warehouse_items:
         writer.writerow(warehouse_item)
