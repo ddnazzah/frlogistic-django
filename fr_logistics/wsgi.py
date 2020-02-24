@@ -1,4 +1,3 @@
-# Authored by Alfred_Asare
 """
 WSGI config for fr_logistics project.
 

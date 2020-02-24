@@ -1,4 +1,3 @@
-# Authored by Alfred_Asare
 from django.urls import path
 from django.conf.urls import url, handler404
 

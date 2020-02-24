@@ -1,4 +1,3 @@
-# Authored by Alfred_Asare
 import csv
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
@@ -77,7 +76,7 @@ def book(request):
 
 
 def contact_confirm(request):
-    context = {'name': request.POST.get('name', None), 'title': 'Success - FR Logistics'}
+    context = {'title': 'Success - FR Logistics'}
     return render(request, 'booking/contact_confirm.html', context)
 
 

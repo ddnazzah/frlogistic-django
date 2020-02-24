@@ -1,4 +1,3 @@
-# Authored by Alfred_Asare
 from django.db import models
 from django.utils import timezone
 

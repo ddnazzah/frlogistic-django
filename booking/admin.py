@@ -1,4 +1,3 @@
-# Authored by Alfred_Asare
 from django.contrib import admin
 from .models import DeliveryModel, SafeKeepingModel, WarehousingModel
 
