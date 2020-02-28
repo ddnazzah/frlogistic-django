@@ -10,11 +10,11 @@ now = datetime.datetime.today()
 date = now.date()
 
 def index(request):
-    return render(request, 'booking/index.html', {'title': 'Home - FR Logistics'})
+    return render(request, 'booking/index.html', {'title': 'FR Logistics - Your Fast and Reliable logistics solution', 'description': 'A Ghanaian based logistics company that is intent on offering Fast and Reliable services such as door to door delivery of logistics, safekeeping of items for students and warehousing solutions'})
 
 
 def about(request):
-    return render(request, 'booking/about.html', {'title': 'About - FR Logistics'})
+    return render(request, 'booking/about.html', {'title': 'About - FR Logistics', 'description': 'All you need to know about FR logistics; your best delivery service in Ghana'})
 
 
 def contact(request):
@@ -36,7 +36,7 @@ def contact(request):
 
 
 def email_success(request):
-    return render(request, 'booking/success.html', {'title': 'Contact - FR Logistics'})
+    return render(request, 'booking/success.html', {'title': 'Contact - FR Logistics', 'description': 'Reach Fast, Reliable logistics here'})
 
 
 def terms(request):
@@ -71,6 +71,7 @@ def book(request):
         'delivery_form': delivery_form,
         'safekeeping_form': safekeeping_form,
         'warehousing_form': warehousing_form,
+        'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
     }
     return render(request, 'booking/book.html', context)
 
