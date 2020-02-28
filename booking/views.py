@@ -67,11 +67,11 @@ def book(request):
         warehousing_form = WarehousingForm()
 
     context = {
-        'title': 'Book Our Services - FR Logistics; Book FR logistics for delivery services, warehousing solutions for SMEs and safekeeping of items for students in Ghana,
+        'title': 'Book Our Services - FR Logistics; Book FR logistics for delivery services, warehousing solutions for SMEs and safekeeping of items for students in Ghana',
         'delivery_form': delivery_form,
         'safekeeping_form': safekeeping_form,
         'warehousing_form': warehousing_form,
-#         'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
+        'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
     }
     return render(request, 'booking/book.html', context)
 
