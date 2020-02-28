@@ -71,7 +71,7 @@ def book(request):
         'delivery_form': delivery_form,
         'safekeeping_form': safekeeping_form,
         'warehousing_form': warehousing_form,
-        'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
+#         'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
     }
     return render(request, 'booking/book.html', context)
 
