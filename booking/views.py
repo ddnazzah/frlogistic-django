@@ -10,11 +10,10 @@ now = datetime.datetime.today()
 date = now.date()
 
 def index(request):
-    return render(request, 'booking/index.html', {'title': 'FR Logistics - Your Fast and Reliable logistics solution for delivery, warehousing and safekeeping', 'description': 'FR logistics is a Ghanaian based logistics company that is intent on offering Fast and Reliable services such as door to door delivery of logistics, safekeeping of items for students and warehousing solutions'})
-
+    return render(request, 'booking/index.html', {'title': 'FR Logistics - Fast & Reliable logistics solutions in Ghana ', 'description': 'FR logistics is a Ghanaian based logistics company that is intent on offering Fast and Reliable services such as door to door delivery of logistics, safekeeping of items for students and warehousing solutions'})
 
 def about(request):
-    return render(request, 'booking/about.html', {'title': 'About - FR Logistics', 'description': 'All you need to know about FR logistics; your best delivery service in Ghana'})
+    return render(request, 'booking/about.html', {'title': 'Delivery, warehousing & safekeeping of items in Ghana', 'description': 'Get to know about FR logistics; your best delivery service in Ghana. Fr Logistics offers easy, fast and reliable logistics solutions in Ghana'})
 
 
 def contact(request):
@@ -32,15 +31,20 @@ def contact(request):
                 return HttpResponse('Invalid header found')
             return redirect('contact_confirm')
 
-    return render(request, 'booking/contact.html', {'title': 'Contact - FR Logistics', 'form': form})
+    return render(request, 'booking/contact.html', {'title': 'Reach Fr logistics via mail, phone or social media platforms',
+    'description': 'Contact Fr logistics for all logistics delivery and warehousing solutions in Ghana. We offer services to students, individuals and enterprises in Ghana',
+     'form': form})
 
 
 def email_success(request):
-    return render(request, 'booking/success.html', {'title': 'Contact - FR Logistics', 'description': 'Reach Fast, Reliable logistics here'})
+    return render(request, 'booking/success.html', {'title': 'Reach Fr logistics via mail, phone or social media platforms',
+     'description': 'Reach Fast, Reliable logistics solutions with Fr logistics. Safety is assured, reliability is guaranteed'})
 
 
 def terms(request):
-    return render(request, 'booking/terms.html', {'title': 'Terms and Conditions - FR Logistics'})
+    return render(request, 'booking/terms.html', {'title': 'Fr logistics offers fast & reliable logistics solutions in Ghana',
+    'description': 'FR logistics is a Ghanaian based logistics company that is intent on offering Fast and Reliable services such as door to door delivery of logistics, safekeeping of items for students and warehousing solutions'
+    })
 
 
 def book(request):
@@ -67,22 +71,26 @@ def book(request):
         warehousing_form = WarehousingForm()
 
     context = {
-        'title': 'Book Our Services - FR Logistics; Book FR logistics for delivery services, warehousing solutions for SMEs and safekeeping of items for students in Ghana',
+        'title': 'Book for Logistics delivery & storage in Ghana - Fr logistics',
         'delivery_form': delivery_form,
         'safekeeping_form': safekeeping_form,
         'warehousing_form': warehousing_form,
-        'description': 'Book for delivery services across Ghana, warehousing solutions for logistics and safekeeping of items for students',
+        'description': 'Book for delivery services, warehousing solutions for logistics and safekeeping of items for students in various regions in Ghana',
     }
     return render(request, 'booking/book.html', context)
 
 
 def contact_confirm(request):
-    context = {'title': 'Success - FR Logistics'}
+    context = {'title': 'Contact Fr Logistics for logistics delivery & storage in Ghana',
+    'description': 'Contact Fr logistics for all delivery and warehousing solutions for logistics in Ghana'
+    }
     return render(request, 'booking/contact_confirm.html', context)
 
 
 def book_confirm(request):
-    context = {'title': 'Success - FR Logistics'}
+    context = {'title': 'Success - Fast and reliable delivery and warehousing solutions for logistics in Ghana',
+    'description': 'Book for easy, safe and fast delivery of logistics in various regions in Ghana'
+    }
     return render(request, 'booking/book_confirm.html', context)
 
 def export_delivery_data_csv(request):
